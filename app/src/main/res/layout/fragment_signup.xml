@@ -6,12 +6,13 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="23dp">
+        android:fitsSystemWindows="true"
+        android:background="#F9F9F9"
+        android:paddingBottom="23dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#F9F9F9"
             tools:context="ui.fragment.SignUpFragment">
 
             <ImageButton
@@ -71,6 +72,7 @@
                             android:layout_height="match_parent"
                             android:background="#FFFFFF"
                             android:hint="Name"
+                            android:inputType="textPersonName"
                             android:maxLength="20"
                             android:maxLines="1"
                             android:textColor="#222222"
@@ -132,6 +134,7 @@
                             android:layout_height="match_parent"
                             android:background="#FFFFFF"
                             android:hint="Email"
+                            android:inputType="textEmailAddress"
                             android:maxLines="1"
                             android:textColor="#222222"
                             android:textCursorDrawable="@null" />
@@ -178,6 +181,7 @@
                     android:layout_height="match_parent"
                     android:background="#FFFFFF"
                     android:hint="Password"
+                    android:inputType="textPassword"
                     android:maxLines="1"
                     android:textColor="#222222" />
 

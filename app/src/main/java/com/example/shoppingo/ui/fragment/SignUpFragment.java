@@ -8,8 +8,6 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.ScaleAnimation;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -24,8 +22,10 @@ import com.example.shoppingo.di.base.BaseFragment;
 import com.example.shoppingo.utils.AppKeys;
 import com.example.shoppingo.utils.Utility;
 import com.example.shoppingo.viewmodel.SignUpViewModel;
-import com.google.android.material.textfield.TextInputEditText;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class SignUpFragment extends BaseFragment {
 
     private static final String TAG = "SignUpFragment";
@@ -92,7 +92,7 @@ public class SignUpFragment extends BaseFragment {
             }
         });
 
-        viewModel.getIsEmailNameValid().observe(this, new Observer<Boolean>() {
+        viewModel.getIsEmailValid().observe(this, new Observer<Boolean>() {
             @Override
             public void onChanged(Boolean aBoolean) {
                 if (aBoolean) {
@@ -127,7 +127,7 @@ public class SignUpFragment extends BaseFragment {
                                             .start();
                                 }
                             }).start();
-                    binding.signUpTxtEmailValidateText.setText(String.format("%s is not correct email !", binding.signUpTIELName.getText().toString()));
+                    binding.signUpTxtEmailValidateText.setText(String.format("%s is not correct email !", binding.signUpTIELEmail.getText().toString()));
                     binding.signUpTxtEmailValidateText.setVisibility(View.VISIBLE);
                     binding.signUpTxtEmailValidateText.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start();
                 }
@@ -154,15 +154,12 @@ public class SignUpFragment extends BaseFragment {
             }
         });
 
-        binding.signUpTIELEmail.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!TextUtils.isEmpty(binding.signUpTIELEmail.getText())) {
-                    if (!hasFocus)
-                        viewModel.getIsEmailNameValid().setValue(
-                                Utility.validate(AppKeys.EMAIL_REGEX, binding.signUpTIELEmail.getText().toString())
-                        );
-                }
+        binding.signUpTIELEmail.setOnFocusChangeListener((v, hasFocus) -> {
+            if (!TextUtils.isEmpty(binding.signUpTIELEmail.getText())) {
+                if (!hasFocus)
+                    viewModel.getIsEmailValid().setValue(
+                            Utility.validate(AppKeys.EMAIL_REGEX, binding.signUpTIELEmail.getText().toString())
+                    );
             }
         });
     }

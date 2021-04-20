@@ -8,6 +8,9 @@ import android.view.WindowManager;
 
 import com.example.shoppingo.R;
 
+import dagger.hilt.android.AndroidEntryPoint;
+
+@AndroidEntryPoint
 public class MainActivity extends AppCompatActivity implements View.OnSystemUiVisibilityChangeListener {
 
     private View decorView;

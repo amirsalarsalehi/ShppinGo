@@ -23,26 +23,12 @@
         android:name="com.example.shoppingo.ui.fragment.ForgotPasswordFragment"
         android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password">
-        <action
-            android:id="@+id/action_forgotPasswordFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:enterAnim="@anim/fragments_slide_in"
-            app:exitAnim="@anim/fragments_slide_out"
-            app:popEnterAnim="@anim/fragments_slide_in"
-            app:popExitAnim="@anim/fragments_slide_out" />
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.shoppingo.ui.fragment.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
-        <action
-            android:id="@+id/action_loginFragment_to_signUpFragment"
-            app:destination="@id/signUpFragment"
-            app:enterAnim="@anim/fragments_slide_in"
-            app:exitAnim="@anim/fragments_slide_out"
-            app:popEnterAnim="@anim/fragments_slide_in"
-            app:popExitAnim="@anim/fragments_slide_out" />
         <action
             android:id="@+id/action_loginFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment"

@@ -12,23 +12,17 @@ import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
 
 @HiltViewModel
-public class SignUpViewModel extends AndroidViewModel {
+public class LoginViewModel extends AndroidViewModel {
 
-    private static final String TAG = "SignUpViewModel";
+    private static final String TAG = "LoginViewModel";
 
-    private MutableLiveData<Boolean> isUserNameValid;
     private MutableLiveData<Boolean> isEmailValid;
 
     @Inject
-    public SignUpViewModel(@NonNull Application application) {
+    public LoginViewModel(@NonNull Application application) {
         super(application);
-        Log.d("TAG", "SignUpViewModel: ");
-        isUserNameValid = new MutableLiveData<>();
         isEmailValid = new MutableLiveData<>();
-    }
-
-    public MutableLiveData<Boolean> getIsUserNameValid() {
-        return isUserNameValid;
+        Log.d("TAG", "LoginViewModel: ");
     }
 
     public MutableLiveData<Boolean> getIsEmailValid() {
