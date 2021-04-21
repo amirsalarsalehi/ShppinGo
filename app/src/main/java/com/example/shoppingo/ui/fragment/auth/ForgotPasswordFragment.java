@@ -1,11 +1,10 @@
-package com.example.shoppingo.ui.fragment;
+package com.example.shoppingo.ui.fragment.auth;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.os.Bundle;
 
 import androidx.databinding.ViewDataBinding;
-import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.fragment.NavHostFragment;
@@ -23,7 +22,6 @@ import com.example.shoppingo.di.base.BaseFragment;
 import com.example.shoppingo.utils.AppKeys;
 import com.example.shoppingo.utils.Utility;
 import com.example.shoppingo.viewmodel.ForgotPasswordViewModel;
-import com.google.android.material.internal.TextWatcherAdapter;
 
 import dagger.hilt.android.AndroidEntryPoint;
 
@@ -71,6 +69,7 @@ public class ForgotPasswordFragment extends BaseFragment {
                             }).start();
                     binding.forgotTxtEmailValidateText.animate().scaleX(0f).scaleY(0f).setDuration(100);
                     binding.forgotTxtEmailValidateText.setVisibility(View.GONE);
+                    binding.forgotLinearCornerEmail.setBackground(null);
                 } else {
                     binding.forgotImgEmailValidate.setImageResource(R.drawable.notvalidate);
                     binding.forgotImgEmailValidate.animate().scaleX(0f).scaleY(0f).setDuration(0)
@@ -89,6 +88,7 @@ public class ForgotPasswordFragment extends BaseFragment {
                     binding.forgotTxtEmailValidateText.setText(String.format("%s is not correct email !", binding.forgotTIELEmail.getText().toString()));
                     binding.forgotTxtEmailValidateText.setVisibility(View.VISIBLE);
                     binding.forgotTxtEmailValidateText.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start();
+                    binding.forgotLinearCornerEmail.setBackgroundResource(R.drawable.linear_error_textinputlayout);
                 }
             }
         });

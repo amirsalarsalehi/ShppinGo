@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/signUpFragment"
-        android:name="com.example.shoppingo.ui.fragment.SignUpFragment"
+        android:name="com.example.shoppingo.ui.fragment.auth.SignUpFragment"
         android:label="Sign up"
         tools:layout="@layout/fragment_signup">
         <action
@@ -17,16 +17,19 @@
             app:exitAnim="@anim/fragments_slide_out"
             app:popEnterAnim="@anim/fragments_slide_in"
             app:popExitAnim="@anim/fragments_slide_out"/>
+        <action
+            android:id="@+id/action_signUpFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
-        android:name="com.example.shoppingo.ui.fragment.ForgotPasswordFragment"
+        android:name="com.example.shoppingo.ui.fragment.auth.ForgotPasswordFragment"
         android:label="Forgot Password"
         tools:layout="@layout/fragment_forgot_password">
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.example.shoppingo.ui.fragment.LoginFragment"
+        android:name="com.example.shoppingo.ui.fragment.auth.LoginFragment"
         android:label="Login"
         tools:layout="@layout/fragment_login">
         <action
@@ -36,5 +39,18 @@
             app:exitAnim="@anim/fragments_slide_out"
             app:popEnterAnim="@anim/fragments_slide_in"
             app:popExitAnim="@anim/fragments_slide_out" />
+        <action
+            android:id="@+id/action_loginFragment_to_mainPageFragment"
+            app:destination="@id/mainPageFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.example.shoppingo.ui.fragment.main.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <argument
+            android:name="currentUser"
+            app:argType="com.example.shoppingo.model.User"
+            app:nullable="true" />
     </fragment>
 </navigation>

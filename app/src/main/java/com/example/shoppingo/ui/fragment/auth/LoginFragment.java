@@ -1,4 +1,4 @@
-package com.example.shoppingo.ui.fragment;
+package com.example.shoppingo.ui.fragment.auth;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -13,6 +13,7 @@ import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.shoppingo.R;
@@ -68,6 +69,7 @@ public class LoginFragment extends BaseFragment {
                             }).start();
                     binding.loginTxtEmailValidateText.animate().scaleX(0f).scaleY(0f).setDuration(100);
                     binding.loginTxtEmailValidateText.setVisibility(View.GONE);
+                    binding.loginLinearCornerEmail.setBackground(null);
                 } else {
                     binding.loginImgEmailValidate.setImageResource(R.drawable.notvalidate);
                     binding.loginImgEmailValidate.animate().scaleX(0f).scaleY(0f).setDuration(0)
@@ -86,6 +88,7 @@ public class LoginFragment extends BaseFragment {
                     binding.loginTxtEmailValidateText.setText(String.format("%s is not correct email !", binding.loginTIELEmail.getText().toString()));
                     binding.loginTxtEmailValidateText.setVisibility(View.VISIBLE);
                     binding.loginTxtEmailValidateText.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start();
+                    binding.loginLinearCornerEmail.setBackgroundResource(R.drawable.linear_error_textinputlayout);
                 }
             }
         });
@@ -103,7 +106,7 @@ public class LoginFragment extends BaseFragment {
 
         binding.loginBtnBack.setOnClickListener(v ->
                 NavHostFragment.findNavController(LoginFragment.this)
-                .popBackStack(R.id.signUpFragment, false));
+                        .navigateUp());
 
         binding.loginTIELEmail.setOnFocusChangeListener((v, hasFocus) -> {
             if (!TextUtils.isEmpty(binding.loginTIELEmail.getText())) {
@@ -113,5 +116,21 @@ public class LoginFragment extends BaseFragment {
                     );
             }
         });
+
+        binding.loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (inputCheckers()) {
+                    NavDirections dir = LoginFragmentDirections.actionLoginFragmentToMainPageFragment(null);
+                    NavHostFragment.findNavController(LoginFragment.this)
+                            .navigate(dir);
+                }
+            }
+        });
+    }
+
+    private boolean inputCheckers() {
+        return !TextUtils.isEmpty(binding.loginTIELEmail.getText().toString()) &&
+                !TextUtils.isEmpty(binding.loginTIELPass.getText().toString());
     }
 }

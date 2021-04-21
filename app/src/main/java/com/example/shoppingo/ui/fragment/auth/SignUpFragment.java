@@ -1,4 +1,4 @@
-package com.example.shoppingo.ui.fragment;
+package com.example.shoppingo.ui.fragment.auth;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -14,11 +14,13 @@ import androidx.annotation.Nullable;
 import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.navigation.NavDirections;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.shoppingo.R;
 import com.example.shoppingo.databinding.FragmentSignupBinding;
 import com.example.shoppingo.di.base.BaseFragment;
+import com.example.shoppingo.ui.MainActivity;
 import com.example.shoppingo.utils.AppKeys;
 import com.example.shoppingo.utils.Utility;
 import com.example.shoppingo.viewmodel.SignUpViewModel;
@@ -70,6 +72,7 @@ public class SignUpFragment extends BaseFragment {
                             }).start();
                     binding.signUpTxtNameValidateText.animate().scaleX(0f).scaleY(0f).setDuration(100);
                     binding.signUpTxtNameValidateText.setVisibility(View.GONE);
+                    binding.signUpLinearCornerName.setBackground(null);
                 } else {
                     binding.signUpImgNameValidate.setImageResource(R.drawable.notvalidate);
                     binding.signUpImgNameValidate.animate().scaleX(0f).scaleY(0f).setDuration(0)
@@ -88,6 +91,7 @@ public class SignUpFragment extends BaseFragment {
                     binding.signUpTxtNameValidateText.setText(String.format("%s is unavailable !", binding.signUpTIELName.getText().toString()));
                     binding.signUpTxtNameValidateText.setVisibility(View.VISIBLE);
                     binding.signUpTxtNameValidateText.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start();
+                    binding.signUpLinearCornerName.setBackgroundResource(R.drawable.linear_error_textinputlayout);
                 }
             }
         });
@@ -112,6 +116,7 @@ public class SignUpFragment extends BaseFragment {
                             }).start();
                     binding.signUpTxtEmailValidateText.animate().scaleX(0f).scaleY(0f).setDuration(100);
                     binding.signUpTxtEmailValidateText.setVisibility(View.GONE);
+                    binding.signUpLinearCornerEmail.setBackground(null);
                 } else {
                     binding.signUpImgEmailValidate.setImageResource(R.drawable.notvalidate);
                     binding.signUpImgEmailValidate.animate().scaleX(0f).scaleY(0f).setDuration(0)
@@ -130,6 +135,7 @@ public class SignUpFragment extends BaseFragment {
                     binding.signUpTxtEmailValidateText.setText(String.format("%s is not correct email !", binding.signUpTIELEmail.getText().toString()));
                     binding.signUpTxtEmailValidateText.setVisibility(View.VISIBLE);
                     binding.signUpTxtEmailValidateText.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start();
+                    binding.signUpLinearCornerEmail.setBackgroundResource(R.drawable.linear_error_textinputlayout);
                 }
             }
         });
@@ -154,6 +160,17 @@ public class SignUpFragment extends BaseFragment {
             }
         });
 
+        binding.signUpBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //if (inputCheckers()) {
+                NavDirections dir = SignUpFragmentDirections.actionSignUpFragmentToMainPageFragment(null);
+                NavHostFragment.findNavController(SignUpFragment.this)
+                        .navigate(dir);
+                //}
+            }
+        });
+
         binding.signUpTIELEmail.setOnFocusChangeListener((v, hasFocus) -> {
             if (!TextUtils.isEmpty(binding.signUpTIELEmail.getText())) {
                 if (!hasFocus)
@@ -162,5 +179,11 @@ public class SignUpFragment extends BaseFragment {
                     );
             }
         });
+    }
+
+    private boolean inputCheckers() {
+        return !TextUtils.isEmpty(binding.signUpTIELEmail.getText().toString()) &&
+                !TextUtils.isEmpty(binding.signUpTIELName.getText().toString()) &&
+                !TextUtils.isEmpty(binding.signUpTIELPass.getText().toString());
     }
 }

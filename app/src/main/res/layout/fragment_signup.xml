@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".ui.fragment.auth.SignUpFragment">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true"
         android:background="#F9F9F9"
+        android:fitsSystemWindows="true"
         android:paddingBottom="23dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:context="ui.fragment.SignUpFragment">
+            android:layout_height="match_parent">
 
             <ImageButton
                 android:id="@+id/signUpBtnBack"
@@ -54,6 +54,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/signUpLabel">
 
                 <LinearLayout
+                    android:id="@+id/signUpLinearCornerName"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
@@ -64,6 +65,7 @@
                         style="@style/AuthTextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
@@ -116,6 +118,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/signUpLinearName">
 
                 <LinearLayout
+                    android:id="@+id/signUpLinearCornerEmail"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="#FFFFFF"
@@ -126,6 +129,7 @@
                         style="@style/AuthTextInputLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="1dp"
                         android:layout_weight="1">
 
                         <com.google.android.material.textfield.TextInputEditText
