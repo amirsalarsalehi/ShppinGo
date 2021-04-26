@@ -3,17 +3,18 @@ plugins {
     id 'androidx.navigation.safeargs'
     id 'dagger.hilt.android.plugin'
 }
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "30.0.3"
 
     defaultConfig {
         applicationId "com.example.shoppingo"
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
-        versionName "1.0"
+        versionName "1.1"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -64,4 +65,24 @@ dependencies {
 
     // Annotation processor
     annotationProcessor "androidx.lifecycle:lifecycle-compiler:2.3.1"
+
+    // Card View
+    implementation "androidx.cardview:cardview:1.0.0"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.12.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.12.0'
+
+    // FlexBox
+    implementation 'com.google.android:flexbox:2.0.1'
+    implementation "androidx.core:core-ktx:+"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+
+    // AppCenter
+    implementation "com.microsoft.appcenter:appcenter-analytics:4.1.0"
+    implementation "com.microsoft.appcenter:appcenter-crashes:4.1.0"
+    implementation "com.microsoft.appcenter:appcenter-distribute:4.1.0"
+}
+repositories {
+    mavenCentral()
 }

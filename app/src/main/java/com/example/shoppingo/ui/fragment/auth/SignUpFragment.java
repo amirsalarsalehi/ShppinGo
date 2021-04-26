@@ -15,6 +15,7 @@ import androidx.databinding.ViewDataBinding;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.NavDirections;
+import androidx.navigation.NavOptions;
 import androidx.navigation.fragment.NavHostFragment;
 
 import com.example.shoppingo.R;
@@ -164,9 +165,8 @@ public class SignUpFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
                 //if (inputCheckers()) {
-                NavDirections dir = SignUpFragmentDirections.actionSignUpFragmentToMainPageFragment(null);
                 NavHostFragment.findNavController(SignUpFragment.this)
-                        .navigate(dir);
+                        .navigate(SignUpFragmentDirections.actionSignUpFragmentToMainFragment());
                 //}
             }
         });

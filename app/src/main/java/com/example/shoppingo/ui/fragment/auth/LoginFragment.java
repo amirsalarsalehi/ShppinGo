@@ -120,11 +120,10 @@ public class LoginFragment extends BaseFragment {
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (inputCheckers()) {
-                    NavDirections dir = LoginFragmentDirections.actionLoginFragmentToMainPageFragment(null);
-                    NavHostFragment.findNavController(LoginFragment.this)
-                            .navigate(dir);
-                }
+                /*if (inputCheckers()) {*/
+                NavHostFragment.findNavController(LoginFragment.this)
+                        .navigate(LoginFragmentDirections.actionLoginFragmentToMainFragment());
+                //}
             }
         });
     }

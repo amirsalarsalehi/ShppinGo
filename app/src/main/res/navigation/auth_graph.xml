@@ -16,17 +16,21 @@
             app:enterAnim="@anim/fragments_slide_in"
             app:exitAnim="@anim/fragments_slide_out"
             app:popEnterAnim="@anim/fragments_slide_in"
-            app:popExitAnim="@anim/fragments_slide_out"/>
+            app:popExitAnim="@anim/fragments_slide_out" />
         <action
-            android:id="@+id/action_signUpFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            android:id="@+id/action_signUpFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fragments_slide_in"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/fragments_slide_in"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
         android:id="@+id/forgotPasswordFragment"
         android:name="com.example.shoppingo.ui.fragment.auth.ForgotPasswordFragment"
         android:label="Forgot Password"
-        tools:layout="@layout/fragment_forgot_password">
-    </fragment>
+        tools:layout="@layout/fragment_forgot_password"></fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.shoppingo.ui.fragment.auth.LoginFragment"
@@ -40,17 +44,30 @@
             app:popEnterAnim="@anim/fragments_slide_in"
             app:popExitAnim="@anim/fragments_slide_out" />
         <action
-            android:id="@+id/action_loginFragment_to_mainPageFragment"
-            app:destination="@id/mainPageFragment" />
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:enterAnim="@anim/fragments_slide_in"
+            app:launchSingleTop="true"
+            app:popEnterAnim="@anim/fragments_slide_in"
+            app:popUpTo="@id/signUpFragment"
+            app:popUpToInclusive="true" />
     </fragment>
     <fragment
-        android:id="@+id/mainPageFragment"
-        android:name="com.example.shoppingo.ui.fragment.main.MainPageFragment"
-        android:label="fragment_main_page"
-        tools:layout="@layout/fragment_main_page" >
-        <argument
-            android:name="currentUser"
-            app:argType="com.example.shoppingo.model.User"
-            app:nullable="true" />
+        android:id="@+id/mainFragment"
+        android:name="com.example.shoppingo.ui.fragment.main.MainFragment"
+        android:label="MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_selectedFashionFragment"
+            app:destination="@id/selectedFashionFragment"
+            app:enterAnim="@anim/fragments_slide_in"
+            app:exitAnim="@anim/fragments_slide_out"
+            app:popEnterAnim="@anim/fragments_slide_in"
+            app:popExitAnim="@anim/fragments_slide_out" />
     </fragment>
+    <fragment
+        android:id="@+id/selectedFashionFragment"
+        android:name="com.example.shoppingo.ui.fragment.main.SelectedFashionFragment"
+        android:label="fragment_selected_fashion"
+        tools:layout="@layout/fragment_selected_fashion" />
 </navigation>

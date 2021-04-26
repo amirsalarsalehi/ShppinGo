@@ -23,8 +23,6 @@
 
     <style name="CollapsingToolbarTitle" parent="TextAppearance.AppCompat">
         <item name="android:textColor">#FFFFFF</item>
-        <item name="android:fontFamily">@font/medium</item>
-        <item name="fontFamily">@font/medium</item>
         <item name="android:textSize">48sp</item>
     </style>
 
